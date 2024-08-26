@@ -11,4 +11,7 @@ The Movie Database Website named as 'Movie Nest' is a Django-based web applicati
 - **Search Functionality**: Search for movies by title.
 - **Pagination**: Navigate through large sets of movie data using pagination.
 
+##  📜 Disclaimer: 
+The images used in this project are the property of their respective movie producers. The content, including movie descriptions and details, has been sourced from IMDb and Wikipedia. This project is created solely for learning purposes and to demonstrate my skills. No copyright infringement is intended.
+
 
