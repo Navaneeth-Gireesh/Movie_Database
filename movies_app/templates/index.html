@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock css %}
+
+{% block header %}
+    <div class="search-bar">
+        <form action="" method="GET">
+            <input type="text" name="movie_name" placeholder="Search for a movie...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+{% endblock header %}
+
+{% block content %}
+    <div class="search-bar">
+        <form action="" method="GET">
+            <input type="text" name="movie_name" placeholder="Search for a movie...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="movie-container">
+        {% for movie in movies_paginator %}
+            <div class="movie-card">
+                <img src="{{ movie.image.url }}" alt="{{ movie.name }}">
+                <div class="movie-details">
+                    <h3>{{ movie.name }}</h3>
+                    <p>{{ movie.description }}</p>
+                    <h4>Duration: {{ movie.duration }}</h4>
+                    <h4>Rating: {{ movie.rating }} / 10</h4>
+                    <h4>Genre: {{ movie.genere }}</h4>
+                </div>
+            </div>
+        {% endfor %}
+        <nav>
+            {% if movies_paginator.has_previous %}
+                <a href="?page=1">First</a>
+                <a href="?page={{ movies_paginator.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            Page : <span class="current-page">{{ movies_paginator.number }}</span> of {{ movies_paginator.paginator.num_pages }}
+
+            {% if movies_paginator.has_next %}
+                <a href="?page={{ movies_paginator.next_page_number }}">Next</a>
+                <a href="?page={{ movies_paginator.paginator.num_pages }}">Last</a>
+            {% endif %}
+        </nav>
+    </div>
+{% endblock content %}
